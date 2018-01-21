@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container">
     <div class="row">
         <form action="/category/create" method="POST">
             {{ csrf_field() }}
@@ -18,13 +18,21 @@
     <div class="row">
         <table class="table table-bordered">
             <tr>
-                <th>#</th>
+                <th>id</th>
                 <th>Name</th>
+                <th>action</th>
             </tr>
             @foreach($categories as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>
+                        <form action="delete id }}" method="POST">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+
                 </tr>
             @endforeach
         </table>
@@ -32,3 +40,5 @@
             {{ $categories->links() }}
         </div>
     </div>
+</div>
+    @endsection

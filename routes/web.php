@@ -33,7 +33,10 @@ Route::prefix('posts')->middleware('auth')->group(function () {
     Route::get('/{post}', 'PostController@post');
     Route::post('/create', 'PostController@save');
 
-    Route::get('/category', 'CategoryController@index')->middleware('auth');
-    Route::post('/category/create', 'CategoryController@save')->middleware('auth');
+
+
 
 });
+Route::get('/create','PostController@create');
+Route::get('/category', 'CategoryController@index')->middleware('auth');
+Route::post('/category/create', 'CategoryController@save')->middleware('auth');

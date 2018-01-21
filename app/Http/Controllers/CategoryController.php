@@ -6,7 +6,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::paginate(5);
         return view('category.all', compact('categories'));
     }
     public function save(Request $request)
@@ -14,6 +14,12 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->save();
+        return redirect('/category');
+    }
+    public function delete($id)
+    {
+        $category = category::find($id);
+        $category->delete();
         return redirect('/category');
     }
 }
